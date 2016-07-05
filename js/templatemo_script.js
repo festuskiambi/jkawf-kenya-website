@@ -11,11 +11,11 @@ jQuery(function(){
     //main menu
     $("#templatemo_banner_menu ul").singlePageNav({offset: $('#templatemo_banner_menu').outerHeight()});
     //banner slide
-    $('.banner').unslider({fluid: true});
+   // $('.banner').unslider({fluid: true});
     $(window).on("load scroll resize", function(){
         banner_height = ($(document).width()/2200) * 960;
         $('.banner').height(banner_height);
-        $('.banner ul li').height(banner_height);
+       // $('.jssor_1').height(banner_height);
         if(banner_height > 250){
             caption_margin_top = (banner_height-100)/2;
             $('.banner .slide_caption:hidden').show();
