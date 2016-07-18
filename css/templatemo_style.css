@@ -29,6 +29,11 @@ h1 {
     font: normal normal normal 34px/60px 'Century Gothic', sans-serif;
     color: #3b3b3b;
 }
+p {
+   
+    font: normal normal normal 14px/30px 'Century Gothic', sans-serif;
+    color: #3b3b3b; 
+}
 
 .templatemo_logo a:hover {
 	text-decoration: none;
@@ -104,145 +109,120 @@ h1 {
     width: 100%;
     height: 400px;
     margin-top: 94px;
+     text-align: center;
     /*position: relative; 
     overflow: visible;*/
 }
-.banner ul { 
-    list-style: none; 
-    padding: 0;
-}
-.banner ul li { 
-    float: left; 
-    background-size:50px 50px;
-    height:400px;
-    width: 100%;
-}
-.banner div.slide_caption {
-	background: rgba(0, 0, 0, 0.0);
-    max-width: 600px;
-    margin: 120px auto auto auto;
-}
-.banner div.slide_caption h1 ,
-.banner div.slide_caption p {
+
+
+#homelogo h2{
     background: none ;
-    text-align: center;
-    color: #fff;
-    line-height: 2em;
+    margin-top: 5px;
+    color: rgb(0, 0, 0);
+    float: inherit;
+    font-size:37px;
     text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
 }
-.banner div.slide_caption a {
-	color: #FF6;
+#homelogo {
+    margin-top: 200px;
+    width: 100%;
 }
-.banner div.slide_caption h1 {
-    font-size: 32px;
-    margin: 0;
-}
-.banner div.slide_caption p {
-    font-size: 16px;
-}
-.templatemo_banner_slide_01 {
-   background: url('../images/grope7.png');
-   background-size: cover;
-}
-.templatemo_banner_slide_02 {
-    background: url('../images/grope5.png');
-    background-size: cover;
-}
-.templatemo_banner_slide_03 {
-    background: url('../images/grope4.png');
-    background-size: cover;
-}
-.templatemo_banner_slide_04 {
-    background: url('../images/grope8.png');
-    background-size: cover;
-}
-.templatemo_banner_slide_05 {
-    background: url('../images/groupphoto1.jpg');
-    
-    background-size: cover;
-}
+
+
+
 /*about our organization*/
 #templatemo_about {
     background: #ffffff;
-    float: left;
+    
 }
-#templatemo_about .about_icon img {
-    width: 100%;
+.about {
+    margin-right: 65px;
 }
-#templatemo_about .about_icon h2 {
+.about h2{
     text-align: center;
-    font: normal normal normal 20px/25px 'Century Gothic', sans-serif;
+    text-decoration-style: solid;
 }
-#templatemo_about .about_icon .imgwap {
+.about1 h2{
     text-align: center;
-    border-radius: 75px;
+    
 }
-#templatemo_about .about_icon p {
+hr{
+    border-top: 3px solid #eee;
+}
+#executive{
     text-align: center;
-    font: normal normal normal 14px/23px 'Century Gothic', sans-serif;
 }
-#templatemo_about .mission {
-    background-color: #bd3e25;
-    color: #f5bd48;
+#executive hr{
+    float: none;
+    margin-left: 513px;
+    margin-right: 517px;
 }
-#templatemo_about .product {
-    background-color: #334d5c;
-    color: #f5bd48;
+
+#patron {
+    border-radius: 50%;
+    background: url("../images/vincent.jpg"); 
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+	width: 200px;
+	height: 200px; 
+   
 }
-#templatemo_about .testimonial {
-    background-color: #efc84a;
-    color: #ab4921;
+#chairman{
+    border-radius: 50%;
+    background: url("../images/vincent.jpg"); 
+    align-self: center;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+	width: 200px;
+	height: 200px; 
 }
-#templatemo_about .statistic {
-    background-color: #334d5c;
-    color: #efc84a;
+#vicechairman{
+    border-radius: 50%;
+    background: url("../images/peter.jpg"); 
+    align-self: center;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+	width: 200px;
+	height: 200px; 
 }
-#templatemo_about #testimonial_text_wap {
-    overflow: hidden;
+#secgen {
+    border-radius: 50%;
+    background: url("../images/peter.png"); 
+	width: 200px;
+	height: 200px; 
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
 }
-#templatemo_about #testimonial_text_wap h2 {
-    font-size: 24px;
-    margin: 0;
-    padding: 12px 0;
+#treasurer {
+    border-radius: 50%;
+    align-self: center;
+    background: url("../images/vincent.jpg"); 
+	width: 200px;
+	height: 200px; 
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
 }
-#templatemo_about #testimonial_text_wap h3 {
-    font-size: 20px;
-    margin: 0;
-    padding: 12px 0;
+#chiefinstructor {
+    border-radius: 50%;
+    background: url("../images/vincent.jpg"); 
+	width: 200px;
+	height: 200px; 
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
 }
-#templatemo_about #testimonial_text_wap img {
-    margin-bottom: 20px ;
+
+#text {
+    
+    text-align: center;
 }
-#templatemo_about #testimonial_text_wap p {
-    font-size: 14px;
-    line-height: 2em;
-}
-#templatemo_about .testimonial_text {
-    width: 100%;
-    float: left;
-}
-#templatemo_about .pre_next {
-    font-size: 70px;
-    top: 50%;
-    margin-top: -35px;
-    position: absolute;
-}
-#templatemo_about .pre_next a {
-    color: #6698b5;
-    float: left;
-}
-#templatemo_about .pre_next a:hover {
-    color: #334d5c;
-}
-#templatemo_about #testimonial_text_wap h1 {
-    font-size: 70px;
-    top: 50%;
-    margin-top: -35px;
-}
-#templatemo_about .testimonial_top_bottom_spacer {
-    padding-bottom: 80px;
-}
-/*events*/
+
+/*training venues*/
 #templatemo_events {
     background: #6698b5;
     float: left;
@@ -250,6 +230,7 @@ h1 {
 }
 #templatemo_events h1{
     color: #fff;
+    text-align: center;
 }
 #templatemo_events .event_box_wap {
     overflow:hidden;
@@ -273,7 +254,7 @@ h1 {
 #templatemo_events .event_box_wap p {
     margin: 0;
     color: #000000;
-    text-align: left;
+    text-align: center;
 }
 #templatemo_events .event_box_wap p {
     padding: 5px 20px 15px 20px;
