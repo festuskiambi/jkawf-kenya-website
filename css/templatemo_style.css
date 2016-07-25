@@ -117,17 +117,18 @@ p {
 
 #homelogo h2{
     background: none ;
-    margin-top: 5px;
     color: rgb(0, 0, 0);
     float: inherit;
-    font-size:37px;
+    font-size:30px;
     text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
 }
 #homelogo {
-    margin-top: 200px;
+    margin-top: 150px;
     width: 100%;
 }
-
+#advert{
+    height: 100px;
+}
 
 
 /*about our organization*/
@@ -160,7 +161,8 @@ hr{
 
 #patron {
     border-radius: 50%;
-    background: url("../images/vincent.jpg"); 
+    background: url("../images/jkakenyalogo.png"); 
+    background-size: cover;
     float: none;
     margin-left: auto;
     margin-right: auto;
@@ -170,7 +172,8 @@ hr{
 }
 #chairman{
     border-radius: 50%;
-    background: url("../images/vincent.jpg"); 
+    background: url("../images/jkakenyalogo.png");
+    background-size: cover;
     align-self: center;
     float: none;
     margin-left: auto;
@@ -180,7 +183,8 @@ hr{
 }
 #vicechairman{
     border-radius: 50%;
-    background: url("../images/peter.jpg"); 
+    background: url("../images/jkakenyalogo.png"); 
+    background-size: cover;
     align-self: center;
     float: none;
     margin-left: auto;
@@ -190,7 +194,8 @@ hr{
 }
 #secgen {
     border-radius: 50%;
-    background: url("../images/peter.png"); 
+    background: url("../images/jkakenyalogo.png"); 
+    background-size: cover;
 	width: 200px;
 	height: 200px; 
     float: none;
@@ -200,7 +205,8 @@ hr{
 #treasurer {
     border-radius: 50%;
     align-self: center;
-    background: url("../images/vincent.jpg"); 
+    background: url("../images/jkakenyalogo.png");
+    background-size: cover;
 	width: 200px;
 	height: 200px; 
     float: none;
@@ -209,13 +215,36 @@ hr{
 }
 #chiefinstructor {
     border-radius: 50%;
-    background: url("../images/vincent.jpg"); 
+    background: url("../images/jkakenyalogo.png"); 
+    background-size: cover;
 	width: 200px;
 	height: 200px; 
     float: none;
     margin-left: auto;
     margin-right: auto;
 }
+#fundraising{
+    border-radius: 50%;
+    background: url("../images/jkakenyalogo.png"); 
+    background-size: cover;
+	width: 200px;
+	height: 200px; 
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#publicity {
+    border-radius: 50%;
+    background: url("../images/jkakenyalogo.png"); 
+    background-size: cover;
+	width: 200px;
+	height: 200px; 
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 #text {
     
@@ -265,6 +294,115 @@ hr{
     line-height: 24px;
 }
 /*timeline*/
+.cntdwn {
+  background-color: #404040;
+  color: #ffffff;
+  font-weight: bold;
+  max-width: 1000px;
+  padding-bottom: 1em;
+  text-align: center;
+  *zoom: 1;
+}
+.cntdwn:before,
+.cntdwn:after {
+    content: " ";
+    display: table;
+}
+.cntdwn:after {
+    clear: both;
+}
+
+
+.intro {
+  background-color: #d00a42;
+  border-bottom: 1px solid #ffffff;
+  float: left;
+  width: 100%;
+  height: 50px;    
+  
+}
+
+.info {
+  text-align: center;
+}
+
+.event {
+  font-size: 1.4em;
+}
+
+.imp {
+  text-transform: uppercase;
+}
+
+.date {
+  font-size: 1em;
+  text-align: right;
+  margin: 0.5em 0;
+}
+
+.txt-secondary {
+  color: #aaaaaa;
+  font-size: 0.9em;
+}
+
+.intro .txt-secondary {
+  color: #dddddd;
+}
+
+.cntdwn__unit {
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cntdwn__number {
+  font-size: 1.5em;
+  display: block;
+}
+
+.cntdwn__unit--alone {
+  font-size: 1em;
+  margin: 0 0 0.5em;
+  width: 100%;
+}
+
+.cntdwn__unit--alone span {
+  vertical-align: top;
+}
+
+.cntdwn__unit--alone .cntdwn__number {
+  display: inline-block;
+  font-size: 1.5em;
+}
+
+.cntdwn__unit--alone .txt-secondary {
+  font-size: 1.5em;
+}
+
+.cntdwn__links {
+  padding: 1em 0 0;
+  text-transform: none;
+}
+
+.cntdwn a,
+.cntdwn a:link {
+  color: #aaaaaa;
+  display: inline-block;
+  font-weight: normal;
+}
+
+.cntdwn a:first-child {
+  margin-right: 1em;
+}
+
+.cntdwn a:hover,
+.cntdwn a:focus {
+  color: #cccccc;
+}
+
+
+
 #templatemo_timeline {
     background: #fff;
     float: left;

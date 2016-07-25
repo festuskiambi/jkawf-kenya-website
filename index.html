@@ -22,6 +22,7 @@
     <link href="css/camera.css" rel="stylesheet">
     <!-- Template  -->
     <link href="css/templatemo_style.css" rel="stylesheet">
+       <script src="js/countdown.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -89,6 +90,140 @@
             $(window).bind("orientationchange", ScaleSlider);
             //responsive code end
         });
+    </script>
+    <script>
+        (function() {
+
+  (function($) {
+    $.countdown = function(el, options) {
+      var getDateData,
+        _this = this;
+      this.el = el;
+      this.$el = $(el);
+      this.$el.data("countdown", this);
+      this.init = function() {
+        _this.options = $.extend({}, $.countdown.defaultOptions, options);
+        if (_this.options.refresh) {
+          _this.interval = setInterval(function() {
+            return _this.render();
+          }, _this.options.refresh);
+        }
+        _this.render();
+        return _this;
+      };
+      getDateData = function(endDate) {
+        var dateData, diff;
+        endDate = Date.parse($.isPlainObject(_this.options.date) ? _this.options.date : new Date(_this.options.date));
+        diff = (endDate - Date.parse(new Date)) / 1000;
+        if (diff <= 0) {
+          diff = 0;
+          if (_this.interval) {
+            _this.stop();
+          }
+          _this.options.onEnd.apply(_this);
+        }
+        dateData = {
+          years: 0,
+          days: 0,
+          hours: 0,
+          min: 0,
+          sec: 0,
+          millisec: 0
+        };
+        if (diff >= (365.25 * 86400)) {
+          dateData.years = Math.floor(diff / (365.25 * 86400));
+          diff -= dateData.years * 365.25 * 86400;
+        }
+        if (diff >= 86400) {
+          dateData.days = Math.floor(diff / 86400);
+          diff -= dateData.days * 86400;
+        }
+        if (diff >= 3600) {
+          dateData.hours = Math.floor(diff / 3600);
+          diff -= dateData.hours * 3600;
+        }
+        if (diff >= 60) {
+          dateData.min = Math.floor(diff / 60);
+          diff -= dateData.min * 60;
+        }
+        dateData.sec = diff;
+        return dateData;
+      };
+      this.leadingZeros = function(num, length) {
+        if (length == null) {
+          length = 2;
+        }
+        num = String(num);
+        while (num.length < length) {
+          num = "0" + num;
+        }
+        return num;
+      };
+      this.update = function(newDate) {
+        _this.options.date = newDate;
+        return _this;
+      };
+      this.render = function() {
+        _this.options.render.apply(_this, [getDateData(_this.options.date)]);
+        return _this;
+      };
+      this.stop = function() {
+        if (_this.interval) {
+          clearInterval(_this.interval);
+        }
+        _this.interval = null;
+        return _this;
+      };
+      this.start = function(refresh) {
+        if (refresh == null) {
+          refresh = _this.options.refresh || $.countdown.defaultOptions.refresh;
+        }
+        if (_this.interval) {
+          clearInterval(_this.interval);
+        }
+        _this.render();
+        _this.options.refresh = refresh;
+        _this.interval = setInterval(function() {
+          return _this.render();
+        }, _this.options.refresh);
+        return _this;
+      };
+      return this.init();
+    };
+    $.countdown.defaultOptions = {
+      date: "June 7, 2087 15:03:25",
+      refresh: 1000,
+      onEnd: $.noop,
+      render: function(date) {
+        return $(this.el).html("" + date.years + " years, " + date.days + " days, " + (this.leadingZeros(date.hours)) + " hours, " + (this.leadingZeros(date.min)) + " min and " + (this.leadingZeros(date.sec)) + " sec");
+      }
+    };
+    $.fn.countdown = function(options) {
+      return $.each(this, function(i, el) {
+        var $el;
+        $el = $(el);
+        if (!$el.data('countdown')) {
+          return $el.data('countdown', new $.countdown(el, options));
+        }
+      });
+    };
+    return void 0;
+  })(jQuery);
+
+}).call(this);
+
+$(function() {
+  $('#cntdwn').countdown({
+    date: "September 6, 2016 10:49:26",
+    render: function(data) {
+      var $el = $(this.el);
+      $el.find('.cntdwn__day').empty().append(this.leadingZeros(data.days, 1));
+      $el.find('.cntdwn__hrs').empty().append(this.leadingZeros(data.hours, 1));
+      $el.find('.cntdwn__min').empty().append(this.leadingZeros(data.min, 1));
+      $el.find('.cntdwn__sec').empty().append(this.leadingZeros(data.sec, 1));
+    }
+  });
+});
     </script>
 
     <style>
@@ -179,6 +314,37 @@
                 <img  src="/images/home.png" />
                 <h2 >Jka / Wf - Kenya </h2>
                 </div>
+                 <div id = "advert">
+                    <div class= "col-md-4
+                                 col-sm-1" ></div>
+                    <div class= "col-md-4 col-sm-11" >
+                         <div id="cntdwn" class="cntdwn">
+  <div class="intro">
+    <div class="info"><span class="txt-secondary">Counting Down To</span> <br>
+      <span class="event">2016 GAsshuku <span class="imp"></span></span></div>
+   
+  </div>
+  <div class="cntdwn__unit cntdwn__unit--alone">
+    <span class="cntdwn__number cntdwn__day"></span> 
+    <span class="txt-secondary">days</span>
+  </div>
+  <div class="cntdwn__unit">
+    <span class="cntdwn__number cntdwn__hrs"></span> 
+    <span class="txt-secondary">hours</span>
+  </div>
+  <div class="cntdwn__unit">
+    <span class="cntdwn__number cntdwn__min"></span> 
+    <span class="txt-secondary">minutes</span>
+  </div>
+  <div class="cntdwn__unit">
+    <span class="cntdwn__number cntdwn__sec"></span> 
+    <span class="txt-secondary">seconds</span>
+  </div>
+                              <p class="cntdwn__links"><a href="#templatemo_timeline">Event Details</a> </p>
+                </div>
+                    </div>
+                    <div class= "col-md-4col-sm-1 " ></div>
+                </div>
         </div>
             
             <a data-u="ad" href="http://www.jssor.com" style="display:none">Bootstrap Carousel</a>
@@ -243,22 +409,27 @@
         <div class="col-xs-12 col-sm-3 col-md-3 about">
             <h2>Jka/Wf Kenya</h2>
             <hr>
-           <p> As a member of the Japan Karate Association (JKA) in Japan and as a representative of JKA in Kenya (JKA Kenya) we practice traditional Shotokan Karate JKA in our school for martial arts and karate in Nairobi Kenya. Our training for martial arts and karate in Nairobi has it’s roots in the teachings of Sensei Ochi and the great masters of the JKA in Japan.upreme Master Funakoshi Gichin, and teaches a specially-refined form of Shotokan style karate which puts heavy focus on kihon (basic techniques), kata (forms), and kumite (sparring) to develop a range of powerful and dynamic techniques. </p>
+           <p>Jka/Wf Kenya is a non profit making association based in Kenya and is associated with the Japan Karate Association (“JKA”) in Japan, one of the most prestigious, oldest and largest Shotokan Karate organisations in the world. Our training for martial arts and karate  has it’s roots in the teachings of Sensei Ochi and the great masters of the JKA in Japan.we follow the five basics of Gichin Funakoshi: character, sincererity, effort, etiquette and self control.
+
+                </p>
         </div>
             <div class="col-xs-12 col-sm-3 col-md-3 about">
                 <h2>Who are the Jka?</h2>
                 <hr>
-                <p> The Japan Karate Association (JKA), is the world’s largest and most prestigious karate organization. Their mission is to promote the way of karate throughout the world, while ensuring that it remains true to the philosophical precepts since establishment of the JKA in 1949.The JKA is the generally-recognized heir to the Shotokan karate tradition as developed by Supreme Master Funakoshi Gichin, and teaches a specially-refined form of Shotokan style karate which puts heavy focus on kihon (basic techniques), kata (forms), and kumite (sparring) to develop a range of powerful and dynamic techniques. </p>
+                <p> The Japan Karate Association (JKA), is the world’s largest and most prestigious karate organization. Their mission is to promote the way of karate throughout the world, while ensuring that it remains true to the philosophical precepts since its establishment .The JKA is the generally-recognized heir to the Shotokan karate tradition as developed by Supreme Master Funakoshi Gichin, and teaches a specially-refined form of Shotokan style karate which puts heavy focus on kihon (basic techniques), kata (forms), and kumite (sparring) to develop a range of powerful and dynamic techniques. </p>
                
             </div>
              <div class="col-xs-12 col-sm-3 col-md-3 about1 " >
                  <h2>History</h2>
                  <hr>
-                 <p> As a member of the Japan Karate Association (JKA) in Japan and as a representative of JKA in Kenya (JKA Kenya) we practice traditional Shotokan Karate JKA in our school for martial arts and karate in Nairobi Kenya. Our training for martial arts and karate in Nairobi has it’s roots in the teachings of Sensei Ochi and the great masters of the JKA in Japan.upreme Master Funakoshi Gichin, and teaches a specially-refined form of Shotokan style karate which puts heavy focus on kihon (basic techniques), kata (forms), and kumite (sparring) to develop a range of powerful and dynamic techniques. </p>
+                 <p> Originally, the martial art Te (“Hand”) developed in Okinawa as a system of self-defense. In 1868 of Okinawan karate master Funakoshi Gichin was born. He dedicated his whole life to promoting the values of the art, and introduced the way of karate-jutsu to Japan, where it spread across the country. By 1949, his followers had established an association for the promotion of karate; they called it Nihon Karate Kyokai, or Japan Karate Association. It was the beginning of the JKA… </p>
             </div>
              <div class=" col-md-1">
             </div>
         </div>
+       <!-- cahirman fundraising commitee
+        cahirman publicity and marketing-->
+        
         <div class=" row  "id ="executive">
             <h2> Executive Committee</h2>
             <hr>
@@ -268,16 +439,15 @@
             <div id ="patron">
            </div>
             <div id ="text">
-                <h4>Peter Njagi</h4>
+                <h4>Dr. Shadrack Mwiti</h4>
                 <h4>Patron</h4></div>
              </div>
             <div class="col-xs-1 col-sm-1 col-md-1">
             </div>
             <div class="col-xs-12 col-sm-2 col-md-2 ">
                 <div id ="chairman"></div>
-               
-            <div id ="text">
-                 <h4>Vincent Lee Anami</h4>
+               <div id ="text">
+                 <h4>Col. (Rtd) Vincent Lee Anami</h4>
                 <h4>Chairman</h4>
                 </div>
             </div>
@@ -286,6 +456,7 @@
             <div class="col-xs-12 col-sm-2 col-md-2 ">
                 <div id ="vicechairman"></div>
                 <div id ="text">
+                    <h4>Charles Mbugua</h4>
                  <h4>Vice Chairman</h4>
                     </div>
             </div>
@@ -311,6 +482,7 @@
                 <div id ="treasurer"></div>
                
             <div id ="text">
+                <h4>Andrew  Njoroge Ngecu</h4>
                 <h4>Treasurer</h4>
                 </div>
             </div>
@@ -323,6 +495,32 @@
                  <h4>Chief Instructor</h4>
                     </div>
             </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+            </div>
+            </div>
+              <div class="row "style="margin:20px; align:center;">
+    
+            <div class="col-xs-2 col-sm-2 col-md-2">
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 ">
+            
+         <div id ="fundraising"></div>
+                <div id ="text">
+                     <h4>Dan Odemba</h4>
+                 <h4>Chairman Fundraising Committee</h4>
+                    </div>
+             </div>
+            <div class="col-xs-1 col-sm-1 col-md-1">
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 ">
+                <div id ="publicity"></div>
+               
+            <div id ="text">
+                <h4>Tobi Lyambila</h4>
+                <h4>Chairman Publicity And Marketing </h4>
+                </div>
+            </div>
+    
             <div class="col-xs-2 col-sm-2 col-md-2">
             </div>
             </div>
@@ -346,10 +544,11 @@
         <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0">
             <div class="event_box_wap event_animate_right">
                 <div class="event_box_img">
-                    <img src="images/groupphoto3.png" class="img-responsive" alt="Free Bootstrap Seminar" />
+                    <img src="images/venue1.png" class="img-responsive" alt="Free Bootstrap Seminar" />
                 </div>
                 <div class="event_box_caption">
                     <h1>Vision Plaza</h1>
+                    
                     <p><span class="glyphicon glyphicon-map-marker"></span>  Vision Plaza, Mombasa Road, Nairobi &nbsp;&nbsp; </p><p><span class="glyphicon glyphicon-time"></span> Monday  7:30 PM to 9:00 PM, Wednesday 7:30 PM to 9:00 PM, Friday 7:30 PM to 9:00 PM. </p>
                 </div>
             </div>
@@ -358,7 +557,7 @@
         <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0">
             <div class="event_box_wap event_animate_left">
                 <div class="event_box_img">
-                    <img src="images/groupphoto3.png" class="img-responsive" alt="" />
+                    <img src="images/venue1.png" class="img-responsive" alt="" />
                 </div>
                 <div class="event_box_caption">
                     <h1>Skylife Nakuru</h1>
@@ -380,7 +579,7 @@
           <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0">
             <div class="event_box_wap event_animate_right">
                 <div class="event_box_img">
-                    <img src="images/groupphoto3.png" class="img-responsive" alt="" />
+                    <img src="images/venue1.png" class="img-responsive" alt="" />
                 </div>
                 <div class="event_box_caption">
                     <h1>Nairobi royal golf club  </h1>
@@ -392,7 +591,7 @@ Off Ngong Rd, Along Mucai Road. &nbsp;&nbsp;</p> <p><span class="glyphicon glyph
         <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0">
             <div class="event_box_wap event_animate_left">
                 <div class="event_box_img">
-                    <img src="images/groupphoto3.png" class="img-responsive" alt="" />
+                    <img src="images/venue1.png" class="img-responsive" alt="" />
                 </div>
                 <div class="event_box_caption">
                     <h1>Dilpak</h1>
@@ -473,25 +672,18 @@ Old Mombasa Rd (Airport North Rd),Nairobi &nbsp;&nbsp; </p><p><span class="glyph
     <h1>News & Events</h1>
     <div class="container-fluid">
         <div class="time_line_wap">
-            <div class="time_line_caption">25<sup>th</sup> to 30<sup>th</sup> April 2016 </div>
-            <div class="time_line_paragraph">
-                <h1>Jka/Wf-Tanzania Gasshuku</h1>
+            <div class="time_line_caption">6<sup>th</sup> to 10<sup>th</sup> September 2016 </div>
+            <div class="time_line_paragraph" style="text-align: center;">
+                <h1 style="text-align: center;">2016 Gasshuku </h1>
+   
               
-                <p>
-                    Oss JKA WF Kenya members that the JKA WF Tz Gasshuku is from 25th to 30th April 2016.Those who wish to make their own arrangement to attend should clear with the office,only JKA WF paid up members will be allowed to participate.For accommodation pls see below and also believe there cheaper accommodation in Dar if you check around.
-                    </p>
-                <p>DAR-ES-SALAAM
-Single Room ................................ US$ 45<br>
-Double Room ............................... US$ 50 <br>
-TRANSPORT: Dar-es-salaam ............................. US$ 5 per day<br>
-SEMINAR FEES: ....................... Tshs. 50,000.00 (Five day)<br>
-For Grading fees kindly contact Jka/Wf-Tanzania /Kenya on the below address for more information.</p>
+               
             </div>
         </div>
         <div class="time_line_wap">
-            <div class="time_line_caption"></div>
+            <div class="time_line_caption">August 2014 gasshuku</div>
             <div class="time_line_paragraph">
-                <h1>Jka/Wf-Kenya Gasshuku </h1>
+                <h1>2014 Gasshuku </h1>
                 <p>
                       <!-- <span class="glyphicon glyphicon-user"></span> <a href="#">Kyor Kyor</a> &nbsp;&nbsp;
                        <span class="glyphicon glyphicon-bookmark"></span> <a href="#">HTML5</a>, <a href="#">Mobile</a> &nbsp;&nbsp;
@@ -584,5 +776,6 @@ src="http://www.youtube.com/embed/ayd2kGUCEhY?autoplay=0">
 <script src="js/unslider.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script src="js/templatemo_script.js"></script>
+    <script src="js/countdown.js"></script>
 </body>
 </html>
